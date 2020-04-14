@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+  redmine:
+    build: ./redmine
+    volumes:
+      - redmine-playground-files:/usr/redmine/files
+    ports:
+      - "3080:3000"
+    links:
+      - mysql
+    restart: always
+    environment:
+      REDMINE_DB_MYSQL: mysql
+      REDMINE_DB_USERNAME: user
+      REDMINE_DB_PASSWORD: mysql
+      REDMINE_DB_DATABASE: redmine
+
+  mysql:
+    build: ./mysql
+    volumes:
+      - redmine-playground-db:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: redmine
+      MYSQL_PASSWORD: mysql
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_USER: user
+
+volumes:
+  redmine-playground-files:
+    driver: local
+  redmine-playground-db:
+    driver: local
