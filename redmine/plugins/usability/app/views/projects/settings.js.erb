@@ -1,0 +1,9 @@
+<% if @us_async_tab.present? %>
+  $('#tab-content-<%= @us_async_tab[:name] %>').html('');
+  $('#tab-content-<%= @us_async_tab[:name] %>').append('<%= escape_javascript(render(partial: @us_async_tab[:partial], locals: { tab: @us_async_tab })) %>');
+  <% hook_name = @us_async_tab[:name].to_s.gsub(' ', '_').underscore %>
+  <% if hook_name.present? %>
+    <% hook_name = "us_view_projects_settings_#{hook_name}_bottom".to_sym %>
+    <%= call_hook(hook_name, project: @project) %>
+  <% end %>
+<% end %>

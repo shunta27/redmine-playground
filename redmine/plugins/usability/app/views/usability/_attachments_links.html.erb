@@ -1,0 +1,9 @@
+<%
+   tab ||= {}
+   attachments ||= tab[:attachments] || []
+   options ||= tab[:options] || {}
+   thumbnails ||= tab[:thumbnails]
+   container ||= tab[:container]
+%>
+
+<%= render partial: 'attachments/links', locals: { container: container, attachments: attachments, options: options, thumbnails: thumbnails } %>

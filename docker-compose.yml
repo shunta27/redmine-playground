@@ -2,6 +2,7 @@ version: '2'
 
 services:
   redmine:
+    container_name: redmine
     build: ./redmine
     volumes:
       - redmine-playground-files:/usr/src/redmine/files

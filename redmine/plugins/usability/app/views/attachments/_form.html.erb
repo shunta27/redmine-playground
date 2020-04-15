@@ -1,0 +1,11 @@
+<%= rmp_render_previous('attachments/form', __FILE__, true, local_assigns || {}) %>
+
+<script type="text/javascript" charset="utf-8">
+  if(typeof original_addInlineAttachmentMarkup !== 'function' && typeof(addInlineAttachmentMarkup)=='function'){
+    var original_addInlineAttachmentMarkup = addInlineAttachmentMarkup;
+    addInlineAttachmentMarkup = function(file){
+        var return_value = original_addInlineAttachmentMarkup.apply(this, [{type: file.type, name: file.name.split(' ').join('_')}]);
+        return return_value;
+    };
+  }
+</script>
