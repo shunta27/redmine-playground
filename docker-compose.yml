@@ -4,7 +4,7 @@ services:
   redmine:
     build: ./redmine
     volumes:
-      - redmine-playground-files:/usr/redmine/files
+      - redmine-playground-files:/usr/src/redmine/files
     ports:
       - "8024:3000"
     links:
