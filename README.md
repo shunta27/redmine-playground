@@ -1,6 +1,6 @@
 # redmine playground
 
-redmine(v4.0) + mysql(v5.7)
+redmine(v4.0) + mysql(v5.7) + mailhog(smtp)
 
 ## redmine 永続化対象
 
@@ -21,5 +21,8 @@ DBはmysqlコンテナを利用
 
 ```bash
 $ docker-compose up -d
-$ open http://localhost:3080/
+# redmine
+$ open http://localhost:8024/
+# mailhog
+$ open http://localhost:8025/
 ```
